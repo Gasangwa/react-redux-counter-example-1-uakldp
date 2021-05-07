@@ -5,13 +5,19 @@ import { connect } from 'react-redux'
 function incrementCounter(num) {
   return { type: 'INCREMENT', num: num }
 }
-
+function decrementCounter(num) {
+  return{type: 'DECREMENT', num: num}
+}
 function Counter(props) {
   function handleClick() {
     props.incrementCounter(1);
   }
+  function handleclick2() {
+    props.decrementCounter(1);
+  }
     return <div>
     <p>{props.count}</p>
+    <button onClick={handleclick2}>Decrement</button>
     <button onClick={handleClick}>Increment</button>
     </div>;
 }
@@ -22,7 +28,8 @@ function mapStateToProps(state) {
   };
 }
 const mapDispatchToProps = {
-  incrementCounter
+  incrementCounter,
+  decrementCounter
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
